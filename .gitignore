@@ -2,3 +2,6 @@
 
 # Bash Magic Enviro requirement
 .bme.d/
+
+# Multigit subrepos
+issues/

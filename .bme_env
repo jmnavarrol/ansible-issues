@@ -5,6 +5,11 @@
 #---
 PROJECT_NAME='ansible-issues'
 
+# Modules' activation (modules are disabled by default, so uncomment those you want to enable
+BME_MODULES=(
+	python3-virtualenvs  # manages Python 3 virtualenvs
+)
+
 # Custom "clean" as supported by Bash Magic Enviro
 bme_custom_clean() {
 	unset -f run_on_this_dir
@@ -16,6 +21,8 @@ run_on_this_dir() {
 	echo -e "${C_BOLD}Current git email:${C_GREEN}" `git config user.email` "${C_NC}"
 	# Shows current branch
 	echo -e "${C_BOLD}Current git branch:${C_GREEN}" `git rev-parse --abbrev-ref HEAD` "${C_NC}"
+	# Loads a "root" Python virtualenv for development purposes
+	load_virtualenv 'ansible-issues' && multigit || return -1
 }
 
 [ -n "${PROJECT_DIR}" ] && run_on_this_dir

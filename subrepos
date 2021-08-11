@@ -1,0 +1,11 @@
+---
+# Subrepos' definition
+
+# Don't forget including your subrepos' roots to .gitignore!
+subrepos:
+- path: 'issues/flush-handlers'
+  repo: 'git@github.com:jmnavarrol/ansible-issue-41313.git'
+  branch: 'project-cleaning'
+- path: 'issues/vars-overload'
+  repo: 'git@github.com:jmnavarrol/ansible-issue-69677.git'
+  branch: 'project-cleaning'
