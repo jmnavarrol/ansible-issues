@@ -23,7 +23,7 @@ run_on_this_dir() {
 	echo -e "${C_BOLD}Current git branch:${C_GREEN}" `git rev-parse --abbrev-ref HEAD` "${C_NC}"
 	# Loads a "root" Python virtualenv for development purposes
 	load_virtualenv 'ansible-issues' || return -1
-	multigit || return -1
+	multigit --run || return -1
 }
 
 [ -n "${PROJECT_DIR}" ] && run_on_this_dir
