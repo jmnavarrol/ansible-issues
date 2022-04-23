@@ -4,6 +4,6 @@
 # Don't forget including your subrepos' roots to .gitignore!
 subrepos:
 - path: 'issues/flush-handlers'
-  repo: 'git@github.com:jmnavarrol/ansible-issue-41313.git'
+  repo: 'git@github.com:jmnavarrol/ansible-issue-flush-handlers.git'
 - path: 'issues/vars-overload'
   repo: 'git@github.com:jmnavarrol/ansible-issue-69677.git'
