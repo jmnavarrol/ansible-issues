@@ -1,40 +1,23 @@
-# Environment file to be loaded by Bash interactive shell
+# Environment file to be sourced by Bash interactive shell
 
-#---
-# 'MAIN' .bme_env file for this project
-#---
-PROJECT_NAME='ansible-issues'
-
-# Modules' activation (modules are disabled by default, so uncomment those you want to enable
-BME_MODULES=(
-	python3-virtualenvs  # manages Python 3 virtualenvs
-)
-
-# Custom "clean" as supported by Bash Magic Enviro
-bme_custom_clean() {
-	unset -f run_on_this_dir
-}
-
-# This workaround is required to apply customizations on the "root" project dir itself
-run_on_this_dir() {
 # Remembers my current "identity"
-	local log_msg="${C_BOLD}Current git email:${C_NC}${C_GREEN} "
-	log_msg+=`git config user.email`
-	log_msg+="${C_NC}"
-	bme_log "${log_msg}" info
-# Shows current branch
-	local log_msg="${C_BOLD}Current git branch: ${C_GREEN}"
-	log_msg+=`git rev-parse --abbrev-ref HEAD`
-	log_msg+="${C_NC}"
-	bme_log  "${log_msg}" info
-# Loads a "root" Python virtualenv for development purposes
-	load_virtualenv 'ansible-issues' || return $?
-# Loads multigit
-	if [[ `which multigit` > /dev/null ]]; then
-		multigit --run || return $?
-	else
-		bme_log "Couldn't find ${C_BOLD}'multigit'${C_NC}" warning
-	fi
-}
+local log_msg="${C_BOLD}Current git email:${C_NC}${C_GREEN} "
+log_msg+=`git config user.email`
+log_msg+="${C_NC}"
+bme_log "${log_msg}" info
 
-[ -n "${PROJECT_DIR}" ] && run_on_this_dir
+# Shows current branch
+local log_msg="${C_BOLD}Current git branch: ${C_GREEN}"
+log_msg+=`git rev-parse --abbrev-ref HEAD`
+log_msg+="${C_NC}"
+bme_log  "${log_msg}" info
+
+# Loads a "root" Python virtualenv for development purposes
+load_virtualenv 'ansible-issues' || return $?
+
+# Loads multigit so "subprojects" stay up to date
+if [[ `which multigit` > /dev/null ]]; then
+	multigit --run || return $?
+else
+	bme_log "Couldn't find ${C_BOLD}'multigit'${C_NC}" warning
+fi
