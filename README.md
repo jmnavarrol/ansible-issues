@@ -9,4 +9,4 @@ Each directory under *issues/* showcases one issue.
 ## Issues
 * **[ansible-69677](https://github.com/jmnavarrol/ansible-issue-69677):** Per var merging of lists (and hashes?).  [See ticket](https://github.com/ansible/ansible/issues/69677).
 * **[ansible-77616](https://github.com/jmnavarrol/ansible-issue-flush-handlers):** meta: flush_handlers. Wrong conditional behaviour.  [See ticket](https://github.com/ansible/ansible/issues/77616).  
-  **NOTE:** this used to be [ansible issue #41313](https://github.com/ansible/ansible/issues/41313), but it was closed, so I opened this new one.
+  **NOTE:** this used to be [ansible issue #41313](https://github.com/ansible/ansible/issues/41313), but it was closed, so I opened [77616](https://github.com/ansible/ansible/issues/77616)... which also was **closed** as **won't fix**.
